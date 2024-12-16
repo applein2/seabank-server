@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.79c94e61.css",
+    "main.js": "/static/js/main.07a27b95.js",
+    "static/media/Inquiries.png": "/static/media/Inquiries.78d28871acf69222e26f.png",
+    "static/media/products.jpg": "/static/media/products.3145427f02d38df3bc8f.jpg",
+    "static/media/about1.jpg": "/static/media/about1.1b4754e72ba2768b2f44.jpg",
+    "static/media/banner.jpg": "/static/media/banner.5718bafe0778fd029645.jpg",
+    "static/media/NoticeBack.jpg": "/static/media/NoticeBack.2d3464f192ebf90974c9.jpg",
+    "index.html": "/index.html",
+    "main.79c94e61.css.map": "/static/css/main.79c94e61.css.map",
+    "main.07a27b95.js.map": "/static/js/main.07a27b95.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79c94e61.css",
+    "static/js/main.07a27b95.js"
+  ]
+}

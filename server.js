@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 const multer = require("multer");
 
 dotenv.config();
@@ -30,11 +31,21 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 
+app.use(express.static(path.join(__dirname, "/build")));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "/build/index.html"));
+});
+
 app.use("/board", upload.array("file"), require("./routes/boardRouter"))
 app.use("/auth", require("./routes/authRouter"))
 app.use("/email", require("./routes/mailRouter"))
 app.use("/download", require("./routes/download"))
 
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "/build/index.html"));
+});
 
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
