@@ -15,9 +15,7 @@ const PORT = process.env.PORT || 3500;
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors()
-);
+app.use(cors());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -31,7 +29,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 
-app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/build/index.html"));
