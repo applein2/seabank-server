@@ -29,7 +29,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use('/', express.static(path.join(__dirname, "/build")));
+app.use('/', express.static(path.join(__dirname, "/build/static/css")));
+app.use('/', express.static(path.join(__dirname, "/build/static/js")));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/build/index.html"));
