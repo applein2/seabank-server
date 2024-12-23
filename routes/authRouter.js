@@ -14,6 +14,7 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email: email });
     if (!user) return res.status(400).json({msg: "User not found"})
     
+    // mongoDB에 등록된 password와 클라이언트에 입력된 password가 일치하는지 검증 
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) return res.status(400).json({ msg: "Invalid password" })
     

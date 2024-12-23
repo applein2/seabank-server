@@ -6,6 +6,7 @@ const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
 
+// .env 파일 사용하기 위한 명령문 
 dotenv.config();
 
 // set up server
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+// 파일 업로드를 위해 multer라는 라이브러리 활용 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/assets");
@@ -29,12 +31,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 
+// 원래 node와 react를 따로 서버를 구축하는데, 이 프로젝트는 node 안에 react의 build 폴더를 넣어놓음 
 app.use('/', express.static(path.join(__dirname, "/build")));
 
+// 브라우저에서 seabank.kr을 치면 build 안에 있는 index.html 파일을 클라이언트에 보내줌. 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/build/index.html"));
 });
 
+// 게시판, 로그인, 이메일, 다운로드 각 라우터 경로 지정
 app.use("/board", upload.array("file"), require("./routes/boardRouter"))
 app.use("/auth", require("./routes/authRouter"))
 app.use("/email", require("./routes/mailRouter"))
