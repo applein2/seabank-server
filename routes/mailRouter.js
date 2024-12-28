@@ -32,8 +32,8 @@ router.post("/", async (req, res) => {
 
     const mailOptions = {
       from: EMAIL_USER,
-      to: "seabankgs@gmail.com",
-      subject: "홈페이지 구매문의",
+      to: "seabank73@gmail.com",
+      subject: "홈페이지를 통한 구매문의",
       text: mailContent,
     };
 
