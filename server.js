@@ -50,7 +50,7 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "/build/index.html"));
 });
 
-app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Server started on port: ${PORT}`));
 
 mongoose
   .connect(process.env.MONGODB_CONNECT, {
