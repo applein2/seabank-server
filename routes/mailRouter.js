@@ -9,7 +9,12 @@ const nodemailer = require("nodemailer");
 dotenv.config();
 
 router.post("/", async (req, res) => {
-  console.log(req.body)
+  // 필수 필드 검증 - meta lead 픽셀 데이터 전송 방지
+  const { name, company, email, message } = req.body;
+  if (!name || !company || !email || !message) {
+    return res.status(400).json({ error: "필수 입력 필드가 누락되었습니다." });
+  }
+
   try {
     const { EMAIL_SERVICE, EMAIL_USER, EMAIL_PASS } = process.env;
 
